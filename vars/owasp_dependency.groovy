@@ -1,11 +1,9 @@
 
 def call() {
     dependencyCheck(
-        additionalArguments: '--scan ./ --format XML --out .',
+        additionalArguments: '--scan ./ --format XML --out . --nvdApiDelay 8000',
         odcInstallation: 'OWASP'
     )
-
-    sh 'find . -name "dependency-check-report.xml" -print'
 
     dependencyCheckPublisher(
         pattern: '**/dependency-check-report.xml'
